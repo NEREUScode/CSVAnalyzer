@@ -1,6 +1,6 @@
 # CSVAnalyzer
 
-CSVAnalyzer is a graphical user interface (GUI) application that processes CSV files, filters data based on user inputs, and generates a PDF report with a time series plot. It provides an intuitive and user-friendly way to analyze and visualize data.
+CSVAnalyzer is a graphical user interface (GUI) application that processes CSV files, filters data based on user inputs, and generates a PDF report with a time series plot. It provides an intuitive and user-friendly way to analyze and visualize data. (make sure that the zip contains files not folders ,and the files are .csv)
 
 ## Features
 
