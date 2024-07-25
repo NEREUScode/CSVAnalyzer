@@ -10,6 +10,7 @@ from pathlib import Path
 import customtkinter as cutk
 from tkinterdnd2 import DND_FILES , TkinterDnD 
 from tkinter import messagebox, filedialog
+from tkinter import *
 import time
 from threading import Thread
 
@@ -34,12 +35,12 @@ def unzipfile(file, extrat_to_folder):
         print(f"an unexpected error {e}")
 
 # function to handle dropping file in the entry 
-def on_file_drop(event):
-    file_path = event.data.strip('{}')
-    add_file_entry.configure(state='normal')
-    add_file_entry.delete(0, cutk.END)
-    add_file_entry.insert(0, file_path)
-    add_file_entry.configure(state='readonly')
+# def on_file_drop(event):
+#     file_path = event.data.strip('{}')
+#     add_file_entry.configure(state='normal')
+#     add_file_entry.delete(0, cutk.END)
+#     add_file_entry.insert(0, file_path)
+#     add_file_entry.configure(state='readonly')
 
 # function to get columns 
 def get_columns_and_filters(folder_path):
@@ -215,7 +216,8 @@ def background_task():
 ############################################################################
 
 # the application window
-app = TkinterDnD.Tk()
+# app = TkinterDnD.Tk()
+app = Tk()
 app.geometry("1000x600") 
 app.title("Analyzer")
 app.resizable(False, False)
@@ -252,14 +254,14 @@ title = cutk.CTkLabel(main_frame, text="Analyzer ", font=font2, text_color=color
 title.pack(pady=(50,50))
 
 # (add file) entry and button
-add_file_entry = cutk.CTkEntry(main_frame, placeholder_text="Drop Your Files Here or Click on the button to Add Files", width=600, height=50, font=font1, state='readonly')
+add_file_entry = cutk.CTkEntry(main_frame, placeholder_text="Drop Your Files Here or Click on the button to Add Files", width=600, height=50, font=font1)
 add_file_entry.pack(pady=(20,20))
 
 add_file_button = cutk.CTkButton(main_frame, text="Add Files ", font=font1, width=200, height=50, text_color="white", fg_color=color2, bg_color=color1, command=lambda: add_file_entry.configure(state='normal') or add_file_entry.delete(0, cutk.END) or add_file_entry.insert(0, filedialog.askopenfilename()) or add_file_entry.configure(state='readonly'))
 add_file_button.pack(pady=(10,10))
 
-add_file_entry.drop_target_register(DND_FILES)
-add_file_entry.dnd_bind('<<Drop>>', on_file_drop)
+# add_file_entry.drop_target_register(DND_FILES)
+# add_file_entry.dnd_bind('<<Drop>>', on_file_drop)
 
 # (file destination) entry
 files_destination_label = cutk.CTkLabel(main_frame, text="Destination path : ", font=font1, text_color=color2)
